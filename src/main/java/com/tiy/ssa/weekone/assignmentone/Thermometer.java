@@ -11,7 +11,7 @@ public class Thermometer
 //	public Thermometer(int temperature, String deg)
 //	{
 //		
-//			this(temperature, deg, true);	
+//			this(temperature, true, deg); this calls the constructor below and then puts in values	
 //		
 //	}
 	
@@ -72,12 +72,12 @@ public class Thermometer
 		}
 	}
 	
-	public void fToC()
+	private void fToC()
 	{
 		temp = ((temperature - 32) * (5))/9;
 	}
 	
-	public void cToF()
+	private void cToF()
 	{
 		temp = (temperature * 9 / 5) + (32);
 	}
