@@ -22,7 +22,7 @@ public class Battery
 	public float useBat(float time)//uses power to see how much it takes away per hour
 	{
 		this.time = time;
-		getTime();
+		getTimeM();
 		getPowerM();
 		
 		amountUsed();
@@ -34,7 +34,7 @@ public class Battery
 	public float charge(float time)//saying it charges at the same rate it uses power
 	{
 		this.time = time;
-		getTime();
+		getTimeM();
 		getPowerM();
 		
 		
@@ -75,7 +75,7 @@ public class Battery
 		return (int) howLong;
 	}
 	
-	public void getTime()
+	public void getTimeM()
 	{
 		time = time*60;
 		
