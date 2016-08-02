@@ -8,10 +8,10 @@ public class Battery
 	float batteryRem;
 	float power; //how many kW it burns per hour
 	
-	public Battery(float capacity, float power)
+	public Battery(float capacity, float startingBat, float power)
 	{
 		this.capacity = capacity;
-		this.startingBat = capacity;//battery is initially fully powered 
+		this.startingBat = startingBat;//added this so i could use time
 		this.power = power;
 		
 	}
@@ -19,7 +19,7 @@ public class Battery
 	//methods you want to add are charge(leftOver is how much charge is on the battery), discharge
 	
 	
-	public float useBat(float time)//uses 10 kW per hour
+	public float useBat(float time)//uses power to see how much it takes away per hour
 	{
 		batteryRem = startingBat;
 		int i = 0;
@@ -34,11 +34,9 @@ public class Battery
 			
 	}
 	
-	public float charge(float time)//charges 10 kW per hour
+	public float charge(float time)
 	{
-		useBat(time);//had to add this because I added the input of time and it initially starts at fully charged.
-		//So i have to minus before i could charge. Just needed to pass these type of tests
-		//or i could add another variable that gave the starting battery reamining
+		batteryRem = startingBat;
 		
 		int i = 0;
 		
@@ -71,8 +69,7 @@ public class Battery
 	
 	public String getState()
 	{
-		String state = "This battery has " + getBatteryRem() + " remaining and is "
-		+ (getCapacity() - getBatteryRem()) + " below capcity. This device would last for " + (getCapacity()/getPower()) + " more hours";
+		String state = "This battery has " + getBatteryRem() + "kW remaining. This device would last for " + (getBatteryRem()/getPower()) + " more hours";
 		System.out.println(state);
 		
 		return state;
