@@ -21,7 +21,11 @@ public class Battery
 	
 	public float useBat(float time)//uses power to see how much it takes away per hour
 	{
-		amountUsed(time);
+		this.time = time;
+		getTime();
+		getPowerM();
+		
+		amountUsed();
 		getState();
 		return batteryRem;
 			
@@ -29,25 +33,30 @@ public class Battery
 	
 	public float charge(float time)//saying it charges at the same rate it uses power
 	{
-		amountCharged(time);
+		this.time = time;
+		getTime();
+		getPowerM();
+		
+		
+		amountCharged();
 		getState();
 		return batteryRem;
 	
 	}
 	
-	private void amountUsed(float time)
+	private void amountUsed()
 	{
 		batteryRem = startingBat;
 		int i = 0;
 		
 		while(batteryRem > 0 && time > i)
 		{
-			batteryRem = batteryRem - getPower();
+			batteryRem = batteryRem - power;
 			i++;
 		}
 	}
 	
-	private void amountCharged(float time)
+	private void amountCharged()
 	{
 		batteryRem = startingBat;
 		
@@ -55,21 +64,28 @@ public class Battery
 		
 		while(batteryRem < capacity && time > i)
 		{
-			batteryRem = batteryRem + getPower();
+			batteryRem = batteryRem + power;
 			i++;
 		}
 	}
 	
-	public float howLong()
+	public int howLong()
 	{
-		float howLong = getBatteryRem()/getPower();
-		return howLong;
+		float howLong = (getBatteryRem()/power);
+		return (int) howLong;
+	}
+	
+	public void getTime()
+	{
+		time = time*60;
+		
 	}
 	
 	
-	public float getPower()
+	public void getPowerM()
 	{
-		return power;
+		power = power/60; //how much is used/charged per minute
+		
 	}
 	
 	public float getCapacity()
@@ -77,14 +93,15 @@ public class Battery
 		return capacity;
 	}
 	
-	public float getBatteryRem()
+	public int getBatteryRem()
 	{
-		return batteryRem;
+		
+		return (int) batteryRem;
 	}
 	
 	public String getState()
 	{
-		String state = "This device battery has " + getBatteryRem() + "kW remaining. This device would last for " + howLong() + " more hours";
+		String state = "This device battery has around " + getBatteryRem() + "kW remaining. This device will last for " + howLong() + " more minutes";
 		System.out.println(state);
 		
 		return state;
