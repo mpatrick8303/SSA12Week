@@ -21,6 +21,22 @@ public class Battery
 	
 	public float useBat(float time)//uses power to see how much it takes away per hour
 	{
+		amountUsed(time);
+		getState();
+		return batteryRem;
+			
+	}
+	
+	public float charge(float time)//saying it charges at the same rate it uses power
+	{
+		amountCharged(time);
+		getState();
+		return batteryRem;
+	
+	}
+	
+	private void amountUsed(float time)
+	{
 		batteryRem = startingBat;
 		int i = 0;
 		
@@ -29,39 +45,38 @@ public class Battery
 			batteryRem = batteryRem - getPower();
 			i++;
 		}
-		getState();
-		return batteryRem;
-			
 	}
 	
-	public float charge(float time)
+	private void amountCharged(float time)
 	{
 		batteryRem = startingBat;
 		
 		int i = 0;
 		
-		while(batteryRem <= capacity && time > i)
+		while(batteryRem < capacity && time > i)
 		{
 			batteryRem = batteryRem + getPower();
 			i++;
 		}
-		getState();
-		return batteryRem;
-	
 	}
+	
+	public float howLong()
+	{
+		float howLong = getBatteryRem()/getPower();
+		return howLong;
+	}
+	
 	
 	public float getPower()
 	{
 		return power;
 	}
-
+	
 	public float getCapacity()
 	{
 		return capacity;
 	}
-
 	
-
 	public float getBatteryRem()
 	{
 		return batteryRem;
@@ -69,7 +84,7 @@ public class Battery
 	
 	public String getState()
 	{
-		String state = "This battery has " + getBatteryRem() + "kW remaining. This device would last for " + (getBatteryRem()/getPower()) + " more hours";
+		String state = "This device battery has " + getBatteryRem() + "kW remaining. This device would last for " + howLong() + " more hours";
 		System.out.println(state);
 		
 		return state;
