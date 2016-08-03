@@ -1,5 +1,5 @@
 package com.tiy.ssa.weekone.assignmenttwo;
-// i left my original code with time implemented at battery then created battery1 without time
+// i left my original code with time implemented at battery then created battery1 without time.
 public class Battery1
 {
 		final float capacity;//in kWh
