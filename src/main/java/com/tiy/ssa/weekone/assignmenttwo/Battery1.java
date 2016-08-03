@@ -70,10 +70,19 @@ public class Battery1
 			return startingBat;
 		}
 		
-		public float howLong(float power)
+		public int howLong(float power)
 		{
-			float howL = (getCapacity()/power);
-			return  howL;
+			if(power == 0)
+			{
+				return 0;
+			}
+			else
+			{
+				System.out.format("%. of minutes remaining for a device with %. of power using a bettery with %.0 kw leftover", (int)(getCapacity()/power));
+				return (int)(getCapacity()/power);
+				
+			}
+			
 		}
 		
 		
@@ -86,10 +95,10 @@ public class Battery1
 			return capacity;
 		}
 		
-		public int getBatteryRem()
+		public float getBatteryRem()
 		{
 			
-			return (int) startingBat;
+			return startingBat;
 		}
 		
 //		public String getState()
