@@ -19,7 +19,7 @@ public class Battery
 	//methods you want to add are charge(leftOver is how much charge is on the battery), discharge
 	
 	
-	public float useBat(float time)//uses power to see how much it takes away per hour
+	public float discharge(float time)//uses power to see how much it takes away per hour
 	{
 		this.time = time;
 		getTimeM();

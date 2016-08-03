@@ -12,7 +12,7 @@ public class BatteryTests
 	@Test
 	public void use()
 	{
-		assertEquals("using it for 2 hours", 25, new Battery(100, 100, 15).useBat(5), .01);//.01 is delta and is for how much it can be off by
+		assertEquals("using it for 2 hours", 25, new Battery(100, 100, 15).discharge(5), .01);//.01 is delta and is for how much it can be off by
 //		assertEquals("using it for 2 hours under 0", -20, new Battery(0,2).use(), .01); shouldn't work bc it's below 0
 		
 	}

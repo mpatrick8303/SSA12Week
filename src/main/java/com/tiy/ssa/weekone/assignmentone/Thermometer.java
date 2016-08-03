@@ -4,9 +4,9 @@ public class Thermometer
 {
 	private Double temperature;
 	private boolean convert;
-	private String deg;
+	private String unit;
 	private Double temp = .0;
-	private Integer tempI = 0;
+	
 	
 //	public Thermometer(int temperature, String deg)
 //	{
@@ -15,27 +15,26 @@ public class Thermometer
 //		
 //	}
 	
-	public Thermometer(Double temperature, boolean convert, String deg )
+	public Thermometer(Double temperature, String unit )
 	{
 		this.temperature = temperature;
-		this.convert = convert;
-		this.deg = deg;
+		this.unit = unit;
 		
 	}
 	
 	
-	public int display(boolean convert, String deg)
+	public int display(boolean convert)
 	{
 		
-		getTemp(convert, deg);
+		getTemp(convert);
 		
 		
 		return (int) Math.round(temp);
 	}
 	
-	public void getTemp(boolean convert, String deg)
+	public void getTemp(boolean convert)
 	{
-		if(deg.toLowerCase() == "c")
+		if(unit.toLowerCase() == "c")
 		{
 			
 			if(convert == true)
@@ -54,7 +53,7 @@ public class Thermometer
 			}
 			
 		}
-		else if(deg.toLowerCase() == "f")
+		else if(unit.toLowerCase() == "f")
 		{
 			
 			if(convert == true)
