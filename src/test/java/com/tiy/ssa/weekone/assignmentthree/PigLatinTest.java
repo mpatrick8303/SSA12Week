@@ -17,7 +17,7 @@ public class PigLatinTest
 		assertEquals("otay", new PigLatin("to").translate());
 		assertEquals("eakspay", new PigLatin("speak").translate());
 		assertEquals("elphay emay otay ethay", new PigLatin("help me to the").translate());
-		assertEquals("I", new PigLatin("I").translate());
+		
 		
 	
 	}

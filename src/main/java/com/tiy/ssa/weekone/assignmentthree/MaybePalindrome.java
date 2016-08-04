@@ -3,7 +3,7 @@ package com.tiy.ssa.weekone.assignmentthree;
 public class MaybePalindrome
 {
 	final String value;
-	String tempValue;
+
 	
 	
 	public MaybePalindrome(String value)
@@ -20,9 +20,11 @@ public class MaybePalindrome
 //			System.out.println(c);
 //			
 //		}
-		replaceSpace();
+		String tempValue;
 		
-		char[] chars =  tempValue.toCharArray();
+		tempValue = replaceSpace();
+		
+		final char[] chars =  tempValue.toCharArray();//use final because it doesn't need to be changed after this
 		
 		boolean palin = false;
 		int j = (chars.length-1);
@@ -51,9 +53,11 @@ public class MaybePalindrome
 		return palin;
 	}
 	
-	private void replaceSpace()
+	private String replaceSpace()
 	{
+		String tempValue;
 		tempValue = value.replaceAll(" ", "");
+		return tempValue;
 	}
 	
 	
