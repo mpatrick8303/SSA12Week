@@ -4,10 +4,8 @@ public class Battery1
 {
 		final float capacity;//in kWh
 		float startingBat;//in kWh
-		float batteryRem;
 		float power; //how many kW it burns per hour
-		float batteryCharge;
-		float batDischarge;
+		
 		
 		public Battery1(float capacity)
 		{

@@ -16,7 +16,7 @@ public class MaybePalindrome
 		
 //		for(char c : chars)//advanced for loop normal way is for(int i = 0, i<chars.length;i++){chars[i]}
 //		{
-//			//advanced way you dont't have i just gives you the actually charector 
+//			//advanced way you dont't have i just gives you the actually char
 //			System.out.println(c);
 //			
 //		}
