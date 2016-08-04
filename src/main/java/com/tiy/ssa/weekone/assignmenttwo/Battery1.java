@@ -76,7 +76,7 @@ public class Battery1
 			}
 			else
 			{
-				System.out.format("%. of minutes remaining for a device with %. of power using a bettery with %.0 kw leftover", (int)(getCapacity()/power));
+//				System.out.format("%.0, of minutes remaining for a device with.0, of power using a bettery with %.0, kw leftover", (int)(getCapacity()/power));
 				return (int)(getCapacity()/power);
 				
 			}
