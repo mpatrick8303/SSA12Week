@@ -4,8 +4,11 @@ public class Knight
 {
 	private int orginX;
 	private int orginY;
-	private int n;
+	private int n; //counter of how many times move has been called
+
 	private int aS = 4;
+	int[] ints = new int[10];
+	int whatMove = getwhatMove(8,1);
 	
 	public Knight (int orginX, int orginY)
 	{
@@ -15,111 +18,35 @@ public class Knight
 	
 	public int move()
 	{
-		int[] ints = new int[aS+2];
-		int aX = 0;//1st spot in the array
-		int aY = 1;//2nd spot in the array
-		n = 0; //counter of how many times move has been called
+
 		
-		ints[aX] = orginX;
-		ints[aY] = orginY;
-		
-		int whatMove = getwhatMove(8,1);
 	
 		switch(n)
 		{
 		case 0:
+			int aX = 0;//1st spot in the array
+			int aY = 1;//2nd spot in the array
+			ints[aX] = orginX;
+			ints[aY] = orginY;
 			move1(whatMove, ints, aX, aY);
 			break;
 		case 1: 
+			aX = 2;
+			aY = 3;
 			move2(whatMove, ints, aX, aY);
 			break;
 		case 2:
+			aX = 4;
+			aY = 5;
 			move3(whatMove, ints, aX, aY);
 			break;
 		case 3: 
+			aX = 6;
+			aY = 7;
 			move4(whatMove, ints, aX, aY);
 			break;
 			
 		}
-//		if(n == 0)
-//		{
-//			
-//			
-//			switch (whatMove)
-//			{
-//			case 1: whatMove = 1;
-//				moveUpRight(ints, aX, aY);
-//				break;
-//			case 2: whatMove = 2;
-//				moveUpLeft(ints, aX, aY);
-//				break;
-//			case 3: whatMove = 3;
-//				moveRightUp(ints, aX, aY);
-//				break;
-//			case 4: whatMove = 4;
-//				moveRightDown(ints, aX, aY);
-//				break;
-//			case 5: whatMove = 5;
-//				moveDownRight(ints, aX, aY);
-//				break;
-//			case 6: whatMove = 6;
-//				moveDownLeft(ints, aX, aY);
-//				break;
-//			case 7: whatMove = 7;
-//				moveLeftUp(ints, aX, aY);
-//				break;
-//			case 8: whatMove = 8;
-//				moveLeftDown(ints, aX, aY);
-//				break;
-//			
-//			}
-//			
-//			aX = aX +2;
-//			aY = aY +2;
-//			getPosition(ints, aX, aY);
-//			n++;
-//			aS = aS + 2;
-//			return n;
-//			
-//			
-//		}
-//		else
-//		{
-//			switch(whatMove)
-//			{
-//			case 1: whatMove = 1;
-//				moveRightDown(ints, aX, aY);
-//				break;
-//			case 2: whatMove = 2;
-//				moveLeftDown(ints, aX, aY);
-//				break;
-//			case 3: whatMove = 3;
-//				moveUpLeft(ints, aX, aY);
-//				break;
-//			case 4: whatMove = 4;
-//				moveDownLeft(ints, aX, aY);
-//				break;
-//			case 5: whatMove = 5;
-//				moveRightUp(ints, aX, aY);
-//				break;
-//			case 6: whatMove = 6;
-//				moveLeftUp(ints, aX, aY);
-//				break;
-//			case 7: whatMove = 7;
-//				moveUpRight(ints, aX, aY);
-//				break;
-//			case 8: whatMove = 8;
-//				moveDownRight(ints, aX, aY);
-//				break;
-//			}
-//		
-//			aX = aX +2;
-//			aY = aY +2;
-//			getPosition(ints, aX, aY);
-//			n++;
-//			aS = aS + 2;
-//			return n;
-//		}
 		
 		return n;
 	}
@@ -252,11 +179,9 @@ public class Knight
 			
 		}
 			
-			aX = aX +2;
-			aY = aY +2;
+		
 			getPosition(ints, aX, aY);
 			n++;
-			aS = aS + 2;
 		
 			
 			
@@ -295,11 +220,10 @@ public class Knight
 			
 		}
 			
-			aX = aX +2;
-			aY = aY +2;
+			
 			getPosition(ints, aX, aY);
 			n++;
-			aS = aS + 2;
+			
 		
 			
 			
@@ -338,11 +262,10 @@ public class Knight
 			
 		}
 			
-			aX = aX +2;
-			aY = aY +2;
+			
 			getPosition(ints, aX, aY);
 			n++;
-			aS = aS + 2;
+	
 		
 			
 			
@@ -381,11 +304,10 @@ public class Knight
 			
 		}
 			
-			aX = aX +2;
-			aY = aY +2;
+			
 			getPosition(ints, aX, aY);
 			n++;
-			aS = aS + 2;
+		
 		
 			
 			

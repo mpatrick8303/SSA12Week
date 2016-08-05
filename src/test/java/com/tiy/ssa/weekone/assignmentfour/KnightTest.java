@@ -27,6 +27,6 @@ public class KnightTest
 //		String abc = "ABC";
 //		abc.toLowerCase();
 //		assertEquals("","abc",abc);
-//	}will fail becuase once a string is initialized you can't change the state of that string
+//	}will fail because once a string is initialized you can't change the state of that string
 
 }
