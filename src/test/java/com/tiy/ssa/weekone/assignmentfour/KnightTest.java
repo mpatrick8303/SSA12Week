@@ -13,10 +13,20 @@ public class KnightTest
 	public void test()
 	{
 		
+		Knight k1 = new Knight(0,0);
+		assertEquals(1, k1.move());
+		assertEquals(2, k1.move());
+		assertEquals(3, k1.move());
+		assertEquals(4, k1.move());
 		
-		assertEquals(8, new Knight(0,0).move());
 	}
-
-	
+//
+//	@Test
+//	public void stringy()
+//	{
+//		String abc = "ABC";
+//		abc.toLowerCase();
+//		assertEquals("","abc",abc);
+//	}will fail becuase once a string is initialized you can't change the state of that string
 
 }

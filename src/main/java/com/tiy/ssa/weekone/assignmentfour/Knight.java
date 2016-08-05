@@ -5,6 +5,7 @@ public class Knight
 	private int orginX;
 	private int orginY;
 	private int n;
+	private int aS = 4;
 	
 	public Knight (int orginX, int orginY)
 	{
@@ -14,7 +15,6 @@ public class Knight
 	
 	public int move()
 	{
-		int aS = 4;
 		int[] ints = new int[aS+2];
 		int aX = 0;//1st spot in the array
 		int aY = 1;//2nd spot in the array
@@ -23,35 +23,52 @@ public class Knight
 		ints[aX] = orginX;
 		ints[aY] = orginY;
 		
-		int rand = getRandom(8,1);
-		if(n == 0){ move1(rand,ints,aX,aY)}
+		int whatMove = getwhatMove(8,1);
+	
+		switch(n)
+		{
+		case 0:
+			move1(whatMove, ints, aX, aY);
+			break;
+		case 1: 
+			move2(whatMove, ints, aX, aY);
+			break;
+		case 2:
+			move3(whatMove, ints, aX, aY);
+			break;
+		case 3: 
+			move4(whatMove, ints, aX, aY);
+			break;
+			
+		}
+//		if(n == 0)
 //		{
 //			
 //			
-//			switch (rand)
+//			switch (whatMove)
 //			{
-//			case 1: rand = 1;
+//			case 1: whatMove = 1;
 //				moveUpRight(ints, aX, aY);
 //				break;
-//			case 2: rand = 2;
+//			case 2: whatMove = 2;
 //				moveUpLeft(ints, aX, aY);
 //				break;
-//			case 3: rand = 3;
+//			case 3: whatMove = 3;
 //				moveRightUp(ints, aX, aY);
 //				break;
-//			case 4: rand = 4;
+//			case 4: whatMove = 4;
 //				moveRightDown(ints, aX, aY);
 //				break;
-//			case 5: rand = 5;
+//			case 5: whatMove = 5;
 //				moveDownRight(ints, aX, aY);
 //				break;
-//			case 6: rand = 6;
+//			case 6: whatMove = 6;
 //				moveDownLeft(ints, aX, aY);
 //				break;
-//			case 7: rand = 7;
+//			case 7: whatMove = 7;
 //				moveLeftUp(ints, aX, aY);
 //				break;
-//			case 8: rand = 8;
+//			case 8: whatMove = 8;
 //				moveLeftDown(ints, aX, aY);
 //				break;
 //			
@@ -68,30 +85,30 @@ public class Knight
 //		}
 //		else
 //		{
-//			switch(rand)
+//			switch(whatMove)
 //			{
-//			case 1: rand = 1;
+//			case 1: whatMove = 1;
 //				moveRightDown(ints, aX, aY);
 //				break;
-//			case 2: rand = 2;
+//			case 2: whatMove = 2;
 //				moveLeftDown(ints, aX, aY);
 //				break;
-//			case 3: rand = 3;
+//			case 3: whatMove = 3;
 //				moveUpLeft(ints, aX, aY);
 //				break;
-//			case 4: rand = 4;
+//			case 4: whatMove = 4;
 //				moveDownLeft(ints, aX, aY);
 //				break;
-//			case 5: rand = 5;
+//			case 5: whatMove = 5;
 //				moveRightUp(ints, aX, aY);
 //				break;
-//			case 6: rand = 6;
+//			case 6: whatMove = 6;
 //				moveLeftUp(ints, aX, aY);
 //				break;
-//			case 7: rand = 7;
+//			case 7: whatMove = 7;
 //				moveUpRight(ints, aX, aY);
 //				break;
-//			case 8: rand = 8;
+//			case 8: whatMove = 8;
 //				moveDownRight(ints, aX, aY);
 //				break;
 //			}
@@ -103,6 +120,8 @@ public class Knight
 //			aS = aS + 2;
 //			return n;
 //		}
+		
+		return n;
 	}
 	
 	public int[] getPosition(int[] ints, int aX, int aY)
@@ -121,14 +140,7 @@ public class Knight
 	
 	public int[] moveUpRight(int[] ints, int aX,int aY)
 	{
-//		if(n == 0)
-//		{
-//			int cX = ints[aX] + 1;
-//			int cY = ints[aY] + 2;
-//			ints[aX] = cX;
-//			ints[aY] = cY;
-//			return ints;
-//		}
+		
 		int cX = ints[aX] + 1;
 		int cY = ints[aY] + 2;
 		ints[aX+2] = cX;
@@ -202,39 +214,39 @@ public class Knight
 		
 	}
 	
-	public int getRandom(int max, int min)
+	public int getwhatMove(int max, int min)
 	{
 		
 		return ((int) (Math.random()*(max - min))) + min;
 	}
 	
-	public void move1(int rand, int[] ints, aX, aY)
+	public void move1(int whatMove, int[] ints, int aX, int aY)
 	{
 			
-		switch (rand)
+		switch (whatMove)
 		{
-		case 1: rand = 1;
+		case 1: 
 			moveUpRight(ints, aX, aY);
 			break;
-		case 2: rand = 2;
+		case 2: 
 			moveUpLeft(ints, aX, aY);
 			break;
-		case 3: rand = 3;
+		case 3: 
 			moveRightUp(ints, aX, aY);
 			break;
-		case 4: rand = 4;
+		case 4: 
 			moveRightDown(ints, aX, aY);
 			break;
-		case 5: rand = 5;
+		case 5: 
 			moveDownRight(ints, aX, aY);
 			break;
-		case 6: rand = 6;
+		case 6: 
 			moveDownLeft(ints, aX, aY);
 			break;
-		case 7: rand = 7;
+		case 7: 
 			moveLeftUp(ints, aX, aY);
 			break;
-		case 8: rand = 8;
+		case 8: 
 			moveLeftDown(ints, aX, aY);
 			break;
 			
@@ -245,10 +257,139 @@ public class Knight
 			getPosition(ints, aX, aY);
 			n++;
 			aS = aS + 2;
-			return n;
+		
 			
 			
-//		
+	
+	}
+	
+	public void move2(int whatMove, int[] ints, int aX, int aY)
+	{
+			
+		switch (whatMove)
+		{
+		case 1: 
+			moveRightDown(ints, aX, aY);
+			break;
+		case 2: 
+			moveLeftDown(ints, aX, aY);
+			break;
+		case 3: 
+			moveUpLeft(ints, aX, aY);
+			break;
+		case 4: 
+			moveDownLeft(ints, aX, aY);
+			break;
+		case 5: 
+			moveRightUp(ints, aX, aY);
+			break;
+		case 6: 
+			moveLeftUp(ints, aX, aY);
+			break;
+		case 7: 
+			moveUpRight(ints, aX, aY);
+			break;
+		case 8: 
+			moveDownRight(ints, aX, aY);
+			break;
+			
+		}
+			
+			aX = aX +2;
+			aY = aY +2;
+			getPosition(ints, aX, aY);
+			n++;
+			aS = aS + 2;
+		
+			
+			
+	
+	}
+	
+	public void move3(int whatMove, int[] ints, int aX, int aY)
+	{
+			
+		switch (whatMove)
+		{
+		case 1: 
+			moveDownLeft(ints, aX, aY);
+			break;
+		case 2: 
+			moveDownRight(ints, aX, aY);
+			break;
+		case 3: 
+			moveLeftDown(ints, aX, aY);
+			break;
+		case 4: 
+			moveLeftUp(ints, aX, aY);
+			break;
+		case 5: 
+			moveUpLeft(ints, aX, aY);
+			break;
+		case 6: 
+			moveUpRight(ints, aX, aY);
+			break;
+		case 7: 
+			moveRightDown(ints, aX, aY);
+			break;
+		case 8: 
+			moveRightUp(ints, aX, aY);
+			break;
+			
+		}
+			
+			aX = aX +2;
+			aY = aY +2;
+			getPosition(ints, aX, aY);
+			n++;
+			aS = aS + 2;
+		
+			
+			
+	
+	}
+	
+	public void move4(int whatMove, int[] ints, int aX, int aY)
+	{
+			
+		switch (whatMove)
+		{
+		case 1: 
+			moveLeftUp(ints, aX, aY);
+			break;
+		case 2: 
+			moveRightUp(ints, aX, aY);
+			break;
+		case 3: 
+			moveDownRight(ints, aX, aY);
+			break;
+		case 4: 
+			moveUpRight(ints, aX, aY);
+			break;
+		case 5:
+			moveLeftDown(ints, aX, aY);
+			break;
+		case 6: 
+			moveRightDown(ints, aX, aY);
+			break;
+		case 7: 
+			moveDownLeft(ints, aX, aY);
+			break;
+		case 8:
+			moveUpLeft(ints, aX, aY);
+			break;
+			
+		}
+			
+			aX = aX +2;
+			aY = aY +2;
+			getPosition(ints, aX, aY);
+			n++;
+			aS = aS + 2;
+		
+			
+			
+	
 	}
 	
 }
