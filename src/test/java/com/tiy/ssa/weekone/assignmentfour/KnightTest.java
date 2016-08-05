@@ -14,11 +14,25 @@ public class KnightTest
 	{
 		
 		Knight k1 = new Knight(0,0);
-		assertEquals(1, k1.move());
-		assertEquals(2, k1.move());
-		assertEquals(3, k1.move());
-		assertEquals(4, k1.move());
 		
+		assertTrue(k1.move());//tests isValid in the move method
+		assertTrue(k1.move());
+		assertTrue(k1.move());
+		assertTrue(k1.move());// tests isValid and isHome in move method
+		
+		Knight k2 = new Knight(1,2);
+		
+		assertTrue(k2.move());
+		assertTrue(k2.move());
+		assertTrue(k2.move());
+		assertTrue(k2.move());
+		
+		Knight k3 = new Knight(-1,-2);
+		
+		assertTrue(k3.move());
+		assertTrue(k3.move());
+		assertTrue(k3.move());
+		assertTrue(k3.move());
 	}
 //
 //	@Test
