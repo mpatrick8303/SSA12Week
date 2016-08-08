@@ -2,14 +2,14 @@ package com.tiy.ssa.weekone.assignmentfour;
 
 public class Knight
 {
-	private int orginX;
-	private int orginY;
-	private int n; //counter of how many times move has been called
+	private final int orginX;
+	private final int orginY;
+	private int n; //counter of how many times move has been called. Need to move this to a local variable
 	private int sA = 4;
 
 
 	private int[] ints = new int[20];
-	private int whatMove = getwhatMove(8,1);
+	private final int whatMove = getwhatMove(8,1);//gets random number between 1-8 to pick the first move
 	
 	public Knight (int orginX, int orginY)
 	{
@@ -25,35 +25,35 @@ public class Knight
 		switch(n)
 		{
 		case 0:
-			int aX = 0;//1st spot in the array
-			int aY = 1;//2nd spot in the array
+			int aX = sA-6;//1st spot in the array
+			int aY = sA-5;//2nd spot in the array
 			ints[aX] = orginX;
 			ints[aY] = orginY;
 			System.out.print("orgin:(" + ints[aX] + ",");
 			System.out.print(ints [aY] + ")");
-			aX = 2;
-			aY = 3;
+			aX = sA-4;
+			aY = sA-3;
 			move1(whatMove, ints, aX, aY);
 			break;
 		case 1: 
-			aX = 4;
-			aY = 5;
+			aX = sA-4;
+			aY = sA-3;
 			move2(whatMove, ints, aX, aY);
 			break;
 		case 2:
-			aX = 6;
-			aY = 7;
+			aX = sA-4;
+			aY = sA-3;
 			move3(whatMove, ints, aX, aY);
 			break;
 		case 3: 
-			aX = 8;
-			aY = 9;
+			aX = sA-4;
+			aY = sA-3;
 			move4(whatMove, ints, aX, aY);	
 			break;
 		
 		}
 		boolean goodMove = isValid();
-		goodMove = notBackwards();
+		goodMove = notBacktrack();
 		if(n >= 4)
 		{
 			goodMove = isHome();
@@ -62,7 +62,7 @@ public class Knight
 		return goodMove;
 	}
 	
-	public int[] getPosition(int[] ints, int aX, int aY)
+	int[] getPosition(int[] ints, int aX, int aY)//wasn't sure how to use this method to test with the first move being random
 	{
 		int spot1 = ints[aX];
 		int spot2 = ints[aY];
@@ -71,7 +71,56 @@ public class Knight
 		return pos;
 	}
 	
-	public int[] moveUpRight(int[] ints, int aX,int aY)
+//	public int[] getPosition1() //was going use this to test the position but not sure how to test with first random movement
+//	{
+//	    int aX;
+//	    int aY;
+//	    int spot1;
+//	    int spot2;
+//	    int pos[];
+//	    
+//	    switch(n)
+//	    {
+//	    case 0:
+//	        aX = sA-6;
+//	        aY = sA-5;
+//	        spot1 = ints[aX];
+//	        spot2 = ints[aY];
+//	        pos = {spot1, spot2};
+//	        return pos;
+//	    case 1:
+//	        aX = sA-4;
+//            aY = sA-3;
+//            spot1 = ints[aX];
+//            spot2 = ints[aY];
+//            pos = {spot1, spot2};
+//            return pos;
+//	    case 2:
+//	        aX = sA-4;
+//            aY = sA-3;
+//            spot1 = ints[aX];
+//            spot2 = ints[aY];
+//            pos = {spot1, spot2};
+//            return pos;
+//	    case 3:
+//	        aX = sA-4;
+//            aY = sA-3;
+//            spot1 = ints[aX];
+//            spot2 = ints[aY];
+//            pos = {spot1, spot2};
+//            return pos;
+//	    case 4:
+//            aX = sA-4;
+//            aY = sA-3;
+//            spot1 = ints[aX];
+//            spot2 = ints[aY];
+//            pos = {spot1, spot2};
+//            return pos;
+//	        
+//	    }
+//	}
+//	
+	int[] moveUpRight(int[] ints, int aX,int aY)
 	{
 		int cX = ints[aX-2] + 1;
 		int cY = ints[aY-2] + 2;
@@ -79,7 +128,7 @@ public class Knight
 		ints[aY] = cY;
 		return ints;
 	}
-	public int[] moveUpLeft(int[] ints, int aX,int aY)
+	int[] moveUpLeft(int[] ints, int aX,int aY)
 	{
 		int cX = ints[aX-2] - 1;
 		int cY = ints[aY-2] + 2;
@@ -87,7 +136,7 @@ public class Knight
 		ints[aY] = cY;
 		return ints;	
 	}
-	public int[] moveRightUp(int[] ints, int aX,int aY)
+	int[] moveRightUp(int[] ints, int aX,int aY)
 	{
 		int cX = ints[aX-2] + 2;
 		int cY = ints[aY-2] + 1;
@@ -95,7 +144,7 @@ public class Knight
 		ints[aY] = cY;
 		return ints;	
 	}
-	public int[] moveRightDown(int[] ints, int aX,int aY)
+	int[] moveRightDown(int[] ints, int aX,int aY)
 	{
 		int cX = ints[aX-2] + 2;
 		int cY = ints[aY-2] - 1;
@@ -103,7 +152,7 @@ public class Knight
 		ints[aY] = cY;
 		return ints;	
 	}
-	public int[] moveDownLeft(int[] ints, int aX,int aY)
+	int[] moveDownLeft(int[] ints, int aX,int aY)
 	{
 		int cX = ints[aX-2] - 1;
 		int cY = ints[aY-2] - 2;
@@ -111,7 +160,7 @@ public class Knight
 		ints[aY] = cY;
 		return ints;	
 	}
-	public int[] moveDownRight(int[] ints, int aX,int aY)
+	int[] moveDownRight(int[] ints, int aX,int aY)
 	{
 		int cX = ints[aX-2] + 1;
 		int cY = ints[aY-2] - 2;
@@ -119,7 +168,7 @@ public class Knight
 		ints[aY] = cY;
 		return ints;	
 	}
-	public int[] moveLeftUp(int[] ints, int aX,int aY)
+	int[] moveLeftUp(int[] ints, int aX,int aY)
 	{
 		int cX = ints[aX-2] - 2;
 		int cY = ints[aY-2] + 1;
@@ -127,7 +176,7 @@ public class Knight
 		ints[aY] = cY;
 		return ints;	
 	}
-	public int[] moveLeftDown(int[] ints, int aX,int aY)
+	int[] moveLeftDown(int[] ints, int aX,int aY)
 	{
 		int cX = ints[aX-2]- 2;
 		int cY = ints[aY-2] - 1;
@@ -136,12 +185,12 @@ public class Knight
 		return ints;	
 	}
 	
-	public int getwhatMove(int max, int min)
+	int getwhatMove(int max, int min)
 	{	
 		return ((int) (Math.random()*(max - min))) + min;
 	}
 	
-	public void move1(int whatMove, int[] ints, int aX, int aY)
+	void move1(int whatMove, int[] ints, int aX, int aY)
 	{	
 		switch (whatMove)
 		{
@@ -178,7 +227,7 @@ public class Knight
 			n++;
 	}
 	
-	public void move2(int whatMove, int[] ints, int aX, int aY)
+	void move2(int whatMove, int[] ints, int aX, int aY)
 	{	
 		switch (whatMove)
 		{
@@ -207,8 +256,8 @@ public class Knight
 			moveDownRight(ints, aX, aY);
 			break;	
 		}	
-			aX = 4;
-			aY = 5;
+			aX = sA-4;
+			aY = sA-3;
 			int [] pos = getPosition(ints, aX, aY);
 		
 			System.out.print(" Move 2(" + pos[0] + ",");
@@ -216,7 +265,7 @@ public class Knight
 			n++;
 	}
 	
-	public void move3(int whatMove, int[] ints, int aX, int aY)
+	void move3(int whatMove, int[] ints, int aX, int aY)
 	{
 			
 		switch (whatMove)
@@ -246,8 +295,8 @@ public class Knight
 			moveRightUp(ints, aX, aY);
 			break;	
 		}	
-			aX = 6;
-			aY = 7;
+			aX = sA-4;
+			aY = sA-3;
 			int [] pos = getPosition(ints, aX, aY);
 		
 			System.out.print(" Move 3(" + pos[0] + ",");
@@ -255,7 +304,7 @@ public class Knight
 			n++;
 	}
 	
-	public void move4(int whatMove, int[] ints, int aX, int aY)
+	void move4(int whatMove, int[] ints, int aX, int aY)
 	{	
 		switch (whatMove)
 		{
@@ -284,8 +333,8 @@ public class Knight
 			moveUpLeft(ints, aX, aY);
 			break;	
 		}		
-			aX = 8;
-			aY = 9;
+			aX = sA-4;
+			aY = sA-3;
 			int [] pos = getPosition(ints, aX, aY);
 		
 			System.out.print(" Back Home(" + pos[0] + ",");
@@ -293,7 +342,7 @@ public class Knight
 			n++;
 	}
 	
-	public boolean isValid()
+	boolean isValid()
 	{
 		int aX = sA - 4;
 		int aY = sA - 3;
@@ -309,7 +358,7 @@ public class Knight
 		else{return false;}
 	}
 	
-	public boolean isHome()
+	boolean isHome()
 	{
 		int aX = sA -4;
 		int aY = sA - 3;
@@ -319,12 +368,13 @@ public class Knight
 		}
 		if(ints[0] == ints[aX] && ints[1] == ints[aY])
 		{
+		    n=0;
 			return true;
 		}
 		else{return false;}
 	}
 	
-	public boolean leastAmountMoves()
+	boolean leastAmountMoves()
 	{
 		if(n == 4)
 		{
@@ -333,7 +383,7 @@ public class Knight
 		else{return false;}
 	}
 	
-	public boolean notBackwards()
+	boolean notBacktrack()
 	{
 		int aX = sA - 4;
 		int aY = sA -3;

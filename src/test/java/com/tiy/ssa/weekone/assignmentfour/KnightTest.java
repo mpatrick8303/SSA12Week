@@ -20,6 +20,11 @@ public class KnightTest
 		assertTrue(k1.move());
 		assertTrue(k1.move());// tests isValid and isHome in move method
 		
+		assertTrue(k1.move());
+        assertTrue(k1.move());
+        assertTrue(k1.move());
+        assertTrue(k1.move());
+		
 		Knight k2 = new Knight(1,2);
 		
 		assertTrue(k2.move());
