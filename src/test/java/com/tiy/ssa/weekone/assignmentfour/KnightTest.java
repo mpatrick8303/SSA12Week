@@ -20,7 +20,7 @@ public class KnightTest
 		assertTrue(k1.move());
 		assertTrue(k1.move());// tests isValid and isHome in move method
 		
-		assertTrue(k1.move());
+		assertTrue(k1.move());//random stays the same because i made it final
         assertTrue(k1.move());
         assertTrue(k1.move());
         assertTrue(k1.move());
