@@ -35,7 +35,7 @@ public class Lists
         Set<T> matching2 = new HashSet<>();
         Iterator<T> iterator = one.iterator();
         
-       
+       // for (T t : one)
         for(;iterator.hasNext();)
         {
             T next = iterator.next();
