@@ -22,29 +22,14 @@ public class User
         return firstN;
     }
 
-    public void setFirstN(String firstN)
-    {
-        this.firstN = firstN;
-    }
-
     public String getLastN()
     {
         return lastN;
     }
 
-    public void setLastN(String lastN)
-    {
-        this.lastN = lastN;
-    }
-
     public int getAge()
     {
         return age;
-    }
-
-    public void setAge(int age)
-    {
-        this.age = age;
     }
     
     public String getName()
@@ -52,6 +37,17 @@ public class User
         
         return fullName;
     }
+
+    @Override
+    public String toString()
+    {
+        return "[ User Name " + firstN + " " + lastN + ", age=" + age + "]";
+    }
+
+    
+    
+    
+    
     
     
     
