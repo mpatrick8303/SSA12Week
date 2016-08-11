@@ -69,6 +69,12 @@ public class WordCountTest
         
     }
     
+    @Test
+    public void testSource()
+    {
+        assertEquals("CONTENT CONTENT CONTENT CONTENT CONTENT CONTENT CONTENT OF OF OF OF WIKIPEDIA PARAGRAPHS PARAGRAPHS GO GO GO GO HERE HERE HERE OF ",wordCount.source());
+    }
+    
     
     
 

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class WordCount
 {
@@ -25,13 +26,15 @@ public class WordCount
         if(!(map.containsKey(word)))
         {
             map.put(word, 1);
+            paragraph.add(word);
         }
         
         else if(map.containsKey(word))
         {
             map.replace(word, map.get(word).intValue(), map.get(word).intValue()+1);
+            paragraph.add(word);
         }
-        paragraph.add(word);
+       
 
     }
 
@@ -74,20 +77,26 @@ public class WordCount
     public List<String> bottom(int many)
       {
         List<String> sortedWordsBottom = new LinkedList<>();
-        
+   
         map.entrySet().stream()//creates a steam which runs a set of elements (entry set) through a number of functions one element at a time
         .sorted(Map.Entry.comparingByValue())//
         .forEachOrdered(e -> sortedWordsBottom.add(e.getKey()));
         
         List<String> sortedWordsSubB = sortedWordsBottom.subList(0, many);
-       source();
+        
         return sortedWordsSubB;
     }
 
 
-    public void source()
+    public String source()
     {
-       System.out.println(toString());
+        String words = "";  
+        
+        for(int i = 0; i < paragraph.size();i++)
+        {
+            words += paragraph.get(i) + " ";
+        }
+        return words;
     }
 
   
@@ -95,7 +104,13 @@ public class WordCount
     @Override
     public String toString()
     {
-        return " " + paragraph;
+        String words = "";  
+        
+        for(int i = 0; i < paragraph.size();i++)
+        {
+            words += paragraph.get(i) + " ";
+        }
+        return words;
     }
 
     @Override
@@ -104,6 +119,7 @@ public class WordCount
         final int prime = 31;
         int result = 1;
         result = prime * result + ((map == null) ? 0 : map.hashCode());
+        result = prime * result + ((paragraph == null) ? 0 : paragraph.hashCode());
         return result;
     }
 
@@ -123,6 +139,13 @@ public class WordCount
                 return false;
         }
         else if (!map.equals(other.map))
+            return false;
+        if (paragraph == null)
+        {
+            if (other.paragraph != null)
+                return false;
+        }
+        else if (!paragraph.equals(other.paragraph))
             return false;
         return true;
     }
