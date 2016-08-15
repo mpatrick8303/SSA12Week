@@ -24,10 +24,22 @@ public abstract class SSAMap<K, V> implements Map<K, V>
     @Override 
     public void clear()
     {
+//        for(Entry<K,V> e : entrySet())//loops through an entry set using the abstract method entryset()
+//        {
+//            remove(e.getKey());
+//        }
+        
+        List<K> keys = new ArrayList<>();
+        
         for(Entry<K,V> e : entrySet())//loops through an entry set using the abstract method entryset()
         {
-            remove(e.getKey());
+            keys.add(e.getKey());
         }
+        for(int i = 0; i<keys.size();i++)
+        {
+            remove(keys.get(i));
+        }       
+        
     }
     
     @Override
@@ -39,7 +51,17 @@ public abstract class SSAMap<K, V> implements Map<K, V>
     @Override
     public boolean containsValue(Object value)
     {
-        return null != get(value);
+        boolean cont = false;
+        for(Entry<K,V> e : entrySet())
+        {
+            
+            if(e.getValue() == value)
+            {
+                cont = true;
+            }
+
+        }
+        return cont;
     }
 
 
