@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class Registry
 {
-    private Map<SocialSecurityNumber, Person>registryTree = new HashMap<>();
+    private final Map<SocialSecurityNumber, Person>registryTree = new HashMap<>();
     
     public boolean add(Person person)
     {

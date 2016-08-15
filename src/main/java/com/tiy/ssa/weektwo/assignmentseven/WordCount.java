@@ -21,6 +21,7 @@ public class WordCount
 
     public void addWord(String word)
     {
+        word = word.toLowerCase();
 
         
         if(!(map.containsKey(word)))
@@ -55,7 +56,7 @@ public class WordCount
     public List<String> top(int many)
     {
         
-        List<String> sortedWordsTop = new LinkedList<>();
+        List<String> sortedWordsTop = new ArrayList<>();
 
         map.entrySet().stream()//creates a steam which runs a set of elements (entry set) through a number of functions one element at a time
         .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))//sorts the list by the value and then reverses it
@@ -64,6 +65,11 @@ public class WordCount
         List<String> sortedWordsSub = sortedWordsTop.subList(0, many);
         
         return sortedWordsSub;
+        
+//      //int compare(entry a, entry b)
+//      {
+//        b.getValue() - a.getValue(); both work
+//      }
 //        
 //        
 ////        myMap.entrySet().stream() example of stream
@@ -76,7 +82,7 @@ public class WordCount
 
     public List<String> bottom(int many)
       {
-        List<String> sortedWordsBottom = new LinkedList<>();
+        List<String> sortedWordsBottom = new ArrayList<>();
    
         map.entrySet().stream()//creates a steam which runs a set of elements (entry set) through a number of functions one element at a time
         .sorted(Map.Entry.comparingByValue())//
@@ -85,6 +91,14 @@ public class WordCount
         List<String> sortedWordsSubB = sortedWordsBottom.subList(0, many);
         
         return sortedWordsSubB;
+        
+//        //int compare(entry a, entry b)
+//          {
+//            a.getValue().compareTo(b.getValue);
+//            a.getValue() - b.getValue(); both work
+//          }
+        //list.sorted(a,b) -> a.getValue - b.getValue)) lamba is faster 
+        //Ascending for a list
     }
 
 
