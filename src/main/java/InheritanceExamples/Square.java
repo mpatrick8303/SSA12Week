@@ -4,15 +4,20 @@ public class Square extends Rectangle //this is an inheritance saying a square i
 {
 
 
-    public Square(int height, int width)
+//    public Square(int height, int width) this will work but other one is easier
+//    {
+//        super(height, width);
+//        
+//        if(super.height != super.width)
+//        {
+//            super.height = super.width;
+//        }
+//       
+//    }
+    
+    public Square(int side)
     {
-        super(height, width);
-        
-        if(super.height != super.width)
-        {
-            super.height = super.width;
-        }
-       
+        super(side,side);//this is how you invoke a constructor from a super class. Have to invoke the super class constructor 
     }
 
     @Override
@@ -32,15 +37,20 @@ public class Square extends Rectangle //this is an inheritance saying a square i
     @Override
     public void setWidth(int width)
     {
-       this.width = width;
-       this.height = width;
+//       this.width = width;
+//       this.height = width;
+        
+        super.setHeight(width);
+        super.setWidth(width);
     }
 
     @Override
     public void setHeight(int height)
     {
-        this.height = height;
-        this.width = height;
+//        this.height = height;
+//        this.width = height;
+        
+        setWidth(height); //calls the method setHeight within the square class and no the rectangle
     }
     
     

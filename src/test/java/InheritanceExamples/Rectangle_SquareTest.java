@@ -26,14 +26,17 @@ public class Rectangle_SquareTest
     @Test
     public void SquareTest()
     {
-        Square s = new Square(2,4);
-        assertEquals("",16,s.area(),.01);
+//        Square s = new Square(2,4);
+//        assertEquals("",16,s.area(),.01);
+        
+        Square s = new Square(4);
+        assertEquals("",16f,s.area(),.01);
         
         s.setHeight(5);
-        assertEquals("",25,s.area(),.01);
+        assertEquals("",25f,s.area(),.01);
         
         s.setWidth(6);
-        assertEquals("",36,s.area(),.01);
+        assertEquals("",36f,s.area(),.01);
     }
 
 }
