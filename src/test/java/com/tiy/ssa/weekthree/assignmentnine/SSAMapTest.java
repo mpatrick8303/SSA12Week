@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -166,5 +167,15 @@ public class SSAMapTest
         assertTrue(map2.values().contains("rodger"));
         assertFalse(map2.values().contains("king"));
     }
+    
+//    @Test public void Test()
+//    {
+//      
+//        Set<String> set = map2.keySet();
+//        
+//        set.add("potato");
+//        
+//        assertEquals("potato",map2.get("potato"));
+//    }
 
 }

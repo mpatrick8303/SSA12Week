@@ -86,7 +86,7 @@ public abstract class SSAMap<K, V> implements Map<K, V>
     @Override
     public Set<K> keySet()
     {
-        Set<K> keySet = new HashSet<>();
+        Set<K> keySet = new HashSet<>();//using this makes it so your are just adding to this new set the keys from the map
         
         for(Entry<K,V> e : entrySet())
         {
