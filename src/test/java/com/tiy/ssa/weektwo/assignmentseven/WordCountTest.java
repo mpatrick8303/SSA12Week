@@ -2,6 +2,13 @@ package com.tiy.ssa.weektwo.assignmentseven;
 
 import static org.junit.Assert.*;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,6 +19,7 @@ public class WordCountTest
 //    static String SOURCE = "CONTENT CONTENT CONTENT CONTENT CONTENT CONTENT CONTENT OF OF OF OF WIKIPEDIA PARAGRAPHS PARAGRAPHS GO GO GO GO HERE HERE HERE OF";
     static String SOURCE = "A company is a military unit, typically consisting of 80–250 soldiers and usually commanded by a major or a captain. Most companies are formed of three to six platoons, although the exact number may vary by country, unit type, and structure. Several companies are grouped to form a battalion or regiment, the latter of which is sometimes formed by several battalions.Certain sub-units were raised as independent companies that reported to no higher unit headquarters.";
     WordCount wordCount = new WordCount();
+  
     
     
     @Before
@@ -25,6 +33,8 @@ public class WordCountTest
         }
 
     }
+    
+   
     
     @Test
     public void testCount()
