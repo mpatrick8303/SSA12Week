@@ -1,60 +1,46 @@
 package com.tiy.ssa.weekthree.assignmentten.chess;
 
-public class Rook implements Piece
+public class Rook extends AllChessPieceMethods
 {
 
     final int x;
     final int y;
     final int val;
-    
+
     public Rook(int x, int y)
     {
-     this.x = x;
-     this.y = y;
-     val = 3;
+        this.x = x;
+        this.y = y;
+        val = 3;
     }
-   
 
     @Override
     public Location where()
     {
-        Location rookStart = new Location(x,y);
+        Location rookStart = new Location(x, y);
         return rookStart;
     }
 
     @Override
     public boolean canMove(Location where)
     {
-        if(where.x > 7 || where.x < 0 || where.y > 7 || where.y <0)
+        if (!isOnBoard(where))
         {
             return false;
         }
-        
-       if((where().x != where.x && where().y == where.y) || (where().y != where.y && where().x == where.x ))
-           return true;
-       else
-           return false;
+
+        if (rookMove(where))
+            return true;
+        else
+            return false;
     }
 
-    @Override
-    public int compareTo(Piece o)
+    public boolean rookMove(Location where)
     {
-        if(this.val == o.getVal())
-        {
-            if((this.where().x - 4) + (this.where().y - 4) > (o.where().x - 4) + (o.where().y - 4))
-                return 1;
-            if((this.where().x - 4) + (this.where().y - 4) < (o.where().x - 4) + (o.where().y - 4))
-                return -1;
-            else
-                return 0;
-                
-        }
-        if(this.val > o.getVal())
-            return 1;
+        if ((where().x != where.x && where().y == where.y) || (where().y != where.y && where().x == where.x))
+            return true;
         else
-            return -1;
-        
-       
+            return false;
     }
     
     @Override
@@ -62,7 +48,6 @@ public class Rook implements Piece
     {
         return val;
     }
-
 
     @Override
     public int hashCode()
@@ -74,7 +59,6 @@ public class Rook implements Piece
         result = prime * result + y;
         return result;
     }
-
 
     @Override
     public boolean equals(Object obj)
@@ -94,7 +78,5 @@ public class Rook implements Piece
             return false;
         return true;
     }
-    
-    
 
 }

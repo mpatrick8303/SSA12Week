@@ -4,7 +4,7 @@ public class Location
 {
     int x;
     int y;
-    
+
     public Location(int x, int y)
     {
         this.x = x;
@@ -37,6 +37,5 @@ public class Location
             return false;
         return true;
     }
-    
-    
+
 }

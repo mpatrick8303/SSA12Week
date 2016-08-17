@@ -17,6 +17,7 @@ public class PieceTest
         assertFalse(p1.canMove(new Location(1,4)));
         assertFalse(p1.canMove(new Location(2,1)));
         assertFalse(p1.canMove(new Location(9,1)));
+        assertFalse(p1.canMove(new Location(1,1)));
 
         Pawn p2 = new Pawn(4,4);
         assertTrue(p2.canMove(new Location(4,5)));

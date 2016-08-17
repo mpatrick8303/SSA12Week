@@ -29,24 +29,26 @@ public interface Piece extends Comparable<Piece>
 
     /**
      * take into account intrinsic value and location
+     * 
      * @param other
-     * @return 
+     * @return
      * @return
      */
-    
+
     public int getVal();
-    
+
     @Override
     boolean equals(Object other);
 
     @Override
     public int hashCode();
-    
+
     public static int whosBetter(Piece a, Piece b)
     {
         return 1;
     }
-
-
+    
+    
+    
 
 }

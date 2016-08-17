@@ -3,74 +3,59 @@ package com.tiy.ssa.weekthree.assignmentten.chess;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Knight implements Piece
+public class Knight extends AllChessPieceMethods
 {
     final int x;
     final int y;
     final int val;
-    
+
     public Knight(int x, int y)
     {
-     this.x = x;
-     this.y = y;
-     val = 2;
+        this.x = x;
+        this.y = y;
+        val = 2;
     }
-   
 
     @Override
     public Location where()
     {
-        Location knightStart = new Location(x,y);
+        Location knightStart = new Location(x, y);
         return knightStart;
     }
 
     @Override
     public boolean canMove(Location where)
     {
-        if(where.x > 7 || where.x < 0 || where.y > 7 || where.y <0)
+        if (!isOnBoard(where))
         {
             return false;
         }
-        
-        ArrayList<Integer> knightMoves = new ArrayList<>(Arrays.asList(1,-1));
-        ArrayList<Integer> knightMoves2 = new ArrayList<>(Arrays.asList(2,-2));
-      
-        if(knightMoves.contains(where().x-where.x) && (knightMoves2.contains(where().y-where.y)))
-            return true;
-        if(knightMoves2.contains(where().x-where.x) && (knightMoves.contains(where().y-where.y)))
+
+        if (knightMove(where))
             return true;
         else
             return false;
-                   
-           
+
     }
 
-    @Override
-    public int compareTo(Piece o)
+    public boolean knightMove(Location where)
     {
-        if(this.val == o.getVal())
-        {
-            if((this.where().x - 4) + (this.where().y - 4) > (o.where().x - 4) + (o.where().y - 4))
-                return 1;
-            if((this.where().x - 4) + (this.where().y - 4) < (o.where().x - 4) + (o.where().y - 4))
-                return -1;
-            else
-                return 0;
-                
-        }
-        if(this.val > o.getVal())
-            return 1;
+        ArrayList<Integer> knightMoves = new ArrayList<>(Arrays.asList(1, -1));
+        ArrayList<Integer> knightMoves2 = new ArrayList<>(Arrays.asList(2, -2));
+
+        if (knightMoves.contains(where().x - where.x) && (knightMoves2.contains(where().y - where.y)))
+            return true;
+        if (knightMoves2.contains(where().x - where.x) && (knightMoves.contains(where().y - where.y)))
+            return true;
         else
-            return -1;
+            return false;
     }
-
-
+    
     @Override
     public int getVal()
     {
         return val;
     }
-
 
     @Override
     public int hashCode()
@@ -82,7 +67,6 @@ public class Knight implements Piece
         result = prime * result + y;
         return result;
     }
-
 
     @Override
     public boolean equals(Object obj)
@@ -102,7 +86,5 @@ public class Knight implements Piece
             return false;
         return true;
     }
-    
-    
 
 }

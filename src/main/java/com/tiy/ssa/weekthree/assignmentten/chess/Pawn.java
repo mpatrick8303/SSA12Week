@@ -1,77 +1,66 @@
 package com.tiy.ssa.weekthree.assignmentten.chess;
 
-public class Pawn implements Piece
+public class Pawn extends AllChessPieceMethods
 {
     final int x;
     final int y;
     final int val;
-    
+
     public Pawn(int x, int y)
     {
-     this.x = x;
-     this.y = y;
-     val = 1;
+        this.x = x;
+        this.y = y;
+        val = 1;
     }
-   
 
     @Override
     public Location where()
     {
-        Location pawnLoc = new Location(x,y);
+        Location pawnLoc = new Location(x, y);
         return pawnLoc;
     }
 
     @Override
     public boolean canMove(Location where)
     {
-        if(where.x > 7 || where.x < 0 || where.y > 7 || where.y <0)
+        if (!isOnBoard(where))
         {
             return false;
         }
-        
-        if(where().y == 1)
-        {
-            if(where().x == where.x && (where.y == ((where().y+1))|| (where.y == where().y+2)))
-                return true;
-            else
-                return false;
 
+        if (pawnMove(where))
+        {
+            return true;
         }
         else
-        {
-            if(where().x == where.x  && where.y == (where().y+1))
-                return true;
-            else
-                return false;
-        }
+            return false;
+
     }
 
-    @Override
-    public int compareTo(Piece o)
+    public boolean pawnMove(Location where)
     {
-        
-        if(this.val == o.getVal())
+        if (where().y == 1)
         {
-            if((this.where().x - 4) + (this.where().y - 4) > (o.where().x - 4) + (o.where().y - 4))
-                return 1;
-            if((this.where().x - 4) + (this.where().y - 4) < (o.where().x - 4) + (o.where().y - 4))
-                return -1;
+            if (where().x == where.x && (where.y == ((where().y + 1)) || (where.y == where().y + 2)))
+                return true;
             else
-                return 0;
-                
-        }
-        if(this.val > o.getVal())
-            return 1;
-        else
-            return -1;      
-    }
+                return false;
 
+        }
+        else
+        {
+            if (where().x == where.x && where.y == (where().y + 1))
+                return true;
+            else
+                return false;
+        }
+    }
+    
     @Override
     public int getVal()
     {
         return val;
     }
-
 
     @Override
     public int hashCode()
@@ -83,7 +72,6 @@ public class Pawn implements Piece
         result = prime * result + y;
         return result;
     }
-
 
     @Override
     public boolean equals(Object obj)
@@ -103,10 +91,5 @@ public class Pawn implements Piece
             return false;
         return true;
     }
-    
-    
-
-
-
 
 }

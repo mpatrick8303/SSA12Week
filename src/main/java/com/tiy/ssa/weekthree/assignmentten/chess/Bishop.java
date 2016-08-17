@@ -1,72 +1,57 @@
 package com.tiy.ssa.weekthree.assignmentten.chess;
 
-public class Bishop implements Piece
+public class Bishop extends AllChessPieceMethods
 {
 
     final int x;
     final int y;
     final int val;
-    
+
     public Bishop(int x, int y)
     {
-     this.x = x;
-     this.y = y;
-     val = 2;
+        this.x = x;
+        this.y = y;
+        val = 2;
     }
-   
 
     @Override
     public Location where()
     {
-        Location bishopStart = new Location(x,y);
+        Location bishopStart = new Location(x, y);
         return bishopStart;
     }
 
     @Override
     public boolean canMove(Location where)
     {
-        if(where.x > 7 || where.x < 0 || where.y > 7 || where.y <0)
+        if (!isOnBoard(where))
         {
             return false;
-        }        
-        int moveX = Math.abs(where().x - where.x);
-        int moveY = Math.abs(where().y - where.y);
-               
-        if(moveX == moveY)
+        }
+
+        if (bishopMove(where))
             return true;
         else
             return false;
-                    
+
     }
 
-    @Override
-    public int compareTo(Piece o)
+    public boolean bishopMove(Location where)
     {
-        if(this.val == o.getVal())
-        {
-            if((this.where().x - 4) + (this.where().y - 4) > (o.where().x - 4) + (o.where().y - 4))
-                return 1;
-            if((this.where().x - 4) + (this.where().y - 4) < (o.where().x - 4) + (o.where().y - 4))
-                return -1;
-            else
-                return 0;
-                
-        }
-        if(this.val > o.getVal())
-            return 1;
+        int moveX = Math.abs(where().x - where.x);
+        int moveY = Math.abs(where().y - where.y);
+
+        if (moveX == moveY)
+            return true;
         else
-            return -1;
-        
-       
+            return false;
     }
-
-
+    
     @Override
     public int getVal()
     {
         return val;
     }
-
 
     @Override
     public int hashCode()
@@ -78,7 +63,6 @@ public class Bishop implements Piece
         result = prime * result + y;
         return result;
     }
-
 
     @Override
     public boolean equals(Object obj)
@@ -99,5 +83,4 @@ public class Bishop implements Piece
         return true;
     }
 
-   
 }

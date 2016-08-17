@@ -1,66 +1,53 @@
 package com.tiy.ssa.weekthree.assignmentten.chess;
 
-public class Queen implements Piece 
+public class Queen extends AllChessPieceMethods
 {
 
     final int x;
     final int y;
     final int val;
-    
+
     public Queen(int x, int y)
     {
-     this.x = x;
-     this.y = y;
-     val = 4;
+        this.x = x;
+        this.y = y;
+        val = 4;
     }
-   
 
     @Override
     public Location where()
     {
-        Location queenStart = new Location(x,y);
+        Location queenStart = new Location(x, y);
         return queenStart;
     }
 
     @Override
     public boolean canMove(Location where)
     {
-        if(where.x > 7 || where.x < 0 || where.y > 7 || where.y <0)
+        if (!isOnBoard(where))
         {
             return false;
         }
-        
+
+        if (queenMove(where))
+            return true;
+        else
+            return false;
+
+    }
+
+    public boolean queenMove(Location where)
+    {
         boolean move = false;
         int moveX = Math.abs(where().x - where.x);
         int moveY = Math.abs(where().y - where.y);
-               
-        if(moveX == moveY)
+
+        if (moveX == moveY)
             move = true;
-        if((where().x != where.x && where().y == where.y) || (where().y != where.y && where().x == where.x ))
+        if ((where().x != where.x && where().y == where.y) || (where().y != where.y && where().x == where.x))
             move = true;
 
         return move;
-           
-    }
-
-    @Override
-    public int compareTo(Piece o)
-    {
-        if(this.val == o.getVal())
-        {
-            if((this.where().x - 4) + (this.where().y - 4) > (o.where().x - 4) + (o.where().y - 4))
-                return 1;
-            if((this.where().x - 4) + (this.where().y - 4) < (o.where().x - 4) + (o.where().y - 4))
-                return -1;
-            else
-                return 0;
-                
-        }
-        if(this.val > o.getVal())
-            return 1;
-        else
-            return -1;
-       
     }
     
     @Override
@@ -68,7 +55,6 @@ public class Queen implements Piece
     {
         return val;
     }
-
 
     @Override
     public int hashCode()
@@ -80,7 +66,6 @@ public class Queen implements Piece
         result = prime * result + y;
         return result;
     }
-
 
     @Override
     public boolean equals(Object obj)
@@ -100,7 +85,6 @@ public class Queen implements Piece
             return false;
         return true;
     }
-    
-    
+
 
 }
