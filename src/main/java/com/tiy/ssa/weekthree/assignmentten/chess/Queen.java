@@ -42,6 +42,9 @@ public class Queen extends AllChessPieceMethods
         int moveX = Math.abs(where().x - where.x);
         int moveY = Math.abs(where().y - where.y);
 
+        if(where.equals(where()))
+            return false;
+        
         if (moveX == moveY)
             move = true;
         if ((where().x != where.x && where().y == where.y) || (where().y != where.y && where().x == where.x))

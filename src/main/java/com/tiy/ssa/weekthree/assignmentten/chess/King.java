@@ -41,6 +41,9 @@ public class King extends AllChessPieceMethods
     public boolean kingMove(Location where)
     {
         ArrayList<Integer> kingMoves = new ArrayList<>(Arrays.asList(1, -1));
+        
+        if(where.equals(where()))
+            return false;
 
         if (kingMoves.contains(where().x - where.x) && (where().y == where.y))
             return true;

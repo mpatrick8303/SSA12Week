@@ -18,6 +18,7 @@ public class PieceTest
         assertFalse(p1.canMove(new Location(2,1)));
         assertFalse(p1.canMove(new Location(9,1)));
         assertFalse(p1.canMove(new Location(1,1)));
+        assertFalse(p1.canMove(p1.where()));
 
         Pawn p2 = new Pawn(4,4);
         assertTrue(p2.canMove(new Location(4,5)));
@@ -40,6 +41,7 @@ public class PieceTest
         assertFalse(kn1.canMove(new Location(0,3)));
         assertFalse(kn1.canMove(new Location(10,0)));
         assertFalse(kn1.canMove(new Location(0,8)));
+        assertFalse(kn1.canMove(kn1.where()));
 
         Knight kn2 = new Knight(4,4);
         assertTrue(kn2.canMove(new Location(5,6)));
@@ -62,6 +64,7 @@ public class PieceTest
         assertFalse(k1.canMove(new Location(5,1)));
         assertFalse(k1.canMove(new Location(10,0)));
         assertFalse(k1.canMove(new Location(0,8)));
+        assertFalse(k1.canMove(k1.where()));
 
         King k2 = new King(4,4);
         assertTrue(k2.canMove(new Location(5,4)));
@@ -87,6 +90,7 @@ public class PieceTest
         assertFalse(b1.canMove(new Location(6,0)));
         assertFalse(b1.canMove(new Location(10,0)));
         assertFalse(b1.canMove(new Location(0,8)));
+        assertFalse(b1.canMove(b1.where()));
 
         Bishop b2 = new Bishop(4,4);
         assertTrue(b2.canMove(new Location(7,7)));
@@ -110,6 +114,7 @@ public class PieceTest
         assertFalse(r1.canMove(new Location(1,4)));
         assertFalse(r1.canMove(new Location(10,0)));
         assertFalse(r1.canMove(new Location(0,8)));
+        assertFalse(r1.canMove(r1.where()));
 
         Rook r2 = new Rook(4,4);
         assertTrue(r2.canMove(new Location(4,0)));
@@ -135,6 +140,7 @@ public class PieceTest
         assertFalse(q1.canMove(new Location(4,6)));
         assertFalse(q1.canMove(new Location(10,0)));
         assertFalse(q1.canMove(new Location(0,8)));
+        assertFalse(q1.canMove(q1.where()));
 
         Queen q2 = new Queen(4,4);
         assertTrue(q2.canMove(new Location(4,7)));

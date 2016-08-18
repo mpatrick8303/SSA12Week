@@ -39,6 +39,12 @@ public class Pawn extends AllChessPieceMethods
 
     public boolean pawnMove(Location where)
     {
+        if(where.equals(where()))
+            return false;
+        
+        if(where.equals(where()))
+            return false;
+        
         if (where().y == 1)
         {
             if (where().x == where.x && (where.y == ((where().y + 1)) || (where.y == where().y + 2)))

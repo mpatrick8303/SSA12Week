@@ -43,6 +43,9 @@ public class Knight extends AllChessPieceMethods
         ArrayList<Integer> knightMoves = new ArrayList<>(Arrays.asList(1, -1));
         ArrayList<Integer> knightMoves2 = new ArrayList<>(Arrays.asList(2, -2));
 
+        
+        if(where.equals(where()))
+            return false;
         if (knightMoves.contains(where().x - where.x) && (knightMoves2.contains(where().y - where.y)))
             return true;
         if (knightMoves2.contains(where().x - where.x) && (knightMoves.contains(where().y - where.y)))

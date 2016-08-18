@@ -40,6 +40,9 @@ public class Bishop extends AllChessPieceMethods
     {
         int moveX = Math.abs(where().x - where.x);
         int moveY = Math.abs(where().y - where.y);
+        
+        if(where.equals(where()))
+            return false;
 
         if (moveX == moveY)
             return true;
