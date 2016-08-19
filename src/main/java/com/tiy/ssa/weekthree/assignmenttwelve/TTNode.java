@@ -27,20 +27,23 @@ public class TTNode
     //adds a word to this node
     //is called recursively to add each child node for each successive
     //letter in the word
+    
+    //goes through the word and adds letter by letter each next one being the child of the the last one. Creating a giant tree for all of the words added
     public void addWord(String word)
     {
         anyChildren = false;
-        int charPos = word.charAt(0) - 'a';
+        int charPos = word.charAt(0) - 'a';//getting what position the child should be added by taking the current character and - it by the value of the character 'a'(96)
+//        System.out.println(charPos);
         
-        if(children[charPos] == null)//seeing if there are any children left of the word
+        if(children[charPos] == null)//seeing if there are any children left of the word in that specific spot
         {
-            children[charPos] = new TTNode(word.charAt(0));//adding the charector grabbed in the next if and adding it to the child node -- calls the second constrctor to create a child
+            children[charPos] = new TTNode(word.charAt(0));//adding the charector grabbed in the next if and adding it to the child node -- calls the second constructor to create a child
             children[charPos].parent = this;//setting the parent equal to this char now
         }
         
-        if(word.length() > 1)
+        if(word.length() > 1)//checking if there still more of the word left
         {
-            children[charPos].addWord(word.substring(1));//grabbing the next letter in the word and calling the function again to add the letter to the child node
+            children[charPos].addWord(word.substring(1));//grabbing the next letter in the word once the previous letter has been added ass a child and then set to the parent by calling the function again to add the letter to the child node
         }
         else
         {
@@ -53,7 +56,7 @@ public class TTNode
     //returns the child TrieNode representing the given char or null if it doesnt exist
     public TTNode getNode(char c)
     {
-        return children[c - 'a']; //returning the node that goes with this char
+        return children[c - 'a']; //returning the node that goes with this char by taking the current char and - it by the value of the char 'a' giving something between 0-26
     }
     
     public List<String> getWord()

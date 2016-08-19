@@ -11,15 +11,15 @@ import java.nio.file.Paths;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TTTest
+public class Text9TrieTest
 {
 
-    TT dictionary;
+    Text9Trie  dictionary;
     
     @Before
     public void setup() throws Exception
     {
-    dictionary = new TT();
+    dictionary = new Text9Trie();
     BufferedReader reader = null;//creating a buffered reader
     try {
         reader = Files.newBufferedReader(Paths.get("C:/Users/admin/resources/corncob_lowercase.txt"),Charset.defaultCharset());//reading the file given by the default char set
@@ -68,20 +68,45 @@ public class TTTest
     }
     
     @Test
-    public void util()
+    public void getPrefixesTest()
     {
-        util u = new util();
+        assertTrue("",dictionary.getPrefixes("277").contains("app"));
+        assertTrue("",dictionary.getPrefixes("277").contains("apq"));
+        assertTrue("",dictionary.getPrefixes("277").contains("asp"));
+        assertTrue("",dictionary.getPrefixes("277").contains("bps"));
+        assertTrue("",dictionary.getPrefixes("277").contains("cqr"));
+        assertTrue("",dictionary.getPrefixes("277").contains("asq"));
+        assertTrue("",dictionary.getPrefixes("277").contains("css"));
+        assertTrue("",dictionary.getPrefixes("277").contains("arr"));
         
-        System.out.println(u.letterCombinations("277"));
+        assertFalse("",dictionary.getPrefixes("277").contains("lkp"));
+        assertFalse("",dictionary.getPrefixes("277").contains("add"));
+        assertFalse("",dictionary.getPrefixes("277").contains("red"));
+        assertFalse("",dictionary.getPrefixes("277").contains("tgf"));
+        
+        
     }
     
     @Test
     public void suggestionsTest()
     {
-        System.out.println(dictionary.suggestions("277"));
+        assertTrue("",dictionary.suggestions("277").contains("apple"));
+        assertTrue("",dictionary.suggestions("277").contains("apparel"));
+        assertTrue("",dictionary.suggestions("277").contains("apportioning"));
+        assertTrue("",dictionary.suggestions("277").contains("arrow"));
+        assertTrue("",dictionary.suggestions("277").contains("arrowhead"));
+        assertTrue("",dictionary.suggestions("277").contains("assembly"));
+        assertTrue("",dictionary.suggestions("277").contains("assumptions"));
+        assertTrue("",dictionary.suggestions("277").contains("ass"));
+        
+        
+        assertFalse("",dictionary.suggestions("277").contains("abduction"));
+        assertFalse("",dictionary.suggestions("277").contains("people"));
+        assertFalse("",dictionary.suggestions("277").contains("asshole"));
+        assertFalse("",dictionary.suggestions("277").contains("lip"));
+        
+        
+        
     }
-    
-
-    
-
 }
+    
